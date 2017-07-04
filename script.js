@@ -1,46 +1,51 @@
 var turn = "X";
-var one = "one";
-var two = "two";
-var three = "three";
-var four = "four";
-var five = "five";
-var six = "six";
-var seven = "seven";
-var eight = "eight";
-var nine = "nine";
+var numbers = ["0","1","2","3","4","5","6","7","8"];
 var game = "";
 var winturn = "";
+document.getElementById("imgone").style.visibility = "hidden";
+document.getElementById("imgtwo").style.visibility = "hidden";
+document.getElementById("imgthree").style.visibility = "hidden";
+document.getElementById("imgfour").style.visibility = "hidden";
+document.getElementById("imgfive").style.visibility = "hidden";
+document.getElementById("imgsix").style.visibility = "hidden";
+document.getElementById("imgseven").style.visibility = "hidden";
+document.getElementById("imgeight").style.visibility = "hidden";
+document.getElementById("imgnine").style.visibility = "hidden";
 function clicked(clicked_id){
-	if(game!="over" && (document.getElementById("img"+clicked_id).src === "")){
+	console.log(clicked_id);
+	console.log(document.getElementById("img"+clicked_id).style.visibility);
+	if(game!="over" && (document.getElementById("img"+clicked_id).style.visibility === "hidden")){
+		console.log("passed");
 		document.getElementById("gametext").style.visibility = "hidden";
 		document.getElementById("winner").style.visibility = "hidden";
 		document.getElementById("img"+clicked_id).src = turn+".png";
+		document.getElementById("img"+clicked_id).style.visibility = "visible";
 		if(clicked_id == "one"){
-			one = turn;
+			numbers[0] = turn;
 		}
 		if(clicked_id == "two"){
-			two = turn;
+			numbers[1] = turn;
 		}
 		if(clicked_id == "three"){
-			three = turn;
+			numbers[2] = turn;
 		}
 		if(clicked_id == "four"){
-			four = turn;
+			numbers[3] = turn;
 		}
 		if(clicked_id == "five"){
-			five = turn;
+			numbers[4] = turn;
 		}
 		if(clicked_id == "six"){
-			six = turn;
+			numbers[5] = turn;
 		}
 		if(clicked_id == "seven"){
-			seven = turn;
+			numbers[6] = turn;
 		}
 		if(clicked_id == "eight"){
-			eight = turn;
+			numbers[7] = turn;
 		}
 		if(clicked_id == "nine"){
-			nine = turn;
+			numbers[8] = turn;
 		}
 		gameOver();
 		if(turn=="X"){
@@ -51,38 +56,29 @@ function clicked(clicked_id){
 	}
 }
 function playAgain(){
-	one = "one";
-	two = "two";
-	three = "three";
-	four = "four";
-	five = "five";
-	six = "six";
-	seven = "seven";
-	eight = "eight";
-	nine = "nine";
+	for(var x = 0; x<numbers.length;x++){
+		numbers[x] = x.toString();
+	}
 	game = "";
 	winturn = "";
 	turn = "X";
-	document.getElementById("imgone").src = "";
-	document.getElementById("imgtwo").src = "";
-	document.getElementById("imgthree").src = "";
-	document.getElementById("imgfour").src = "";
-	document.getElementById("imgsix").src = "";
-	document.getElementById("imgseven").src = "";
-	document.getElementById("imgeight").src = "";
-	document.getElementById("imgnine").src = "";
+	document.getElementById("imgone").style.visibility = "hidden";
+	document.getElementById("imgtwo").style.visibility = "hidden";
+	document.getElementById("imgthree").style.visibility = "hidden";
+	document.getElementById("imgfour").style.visibility = "hidden";
+	document.getElementById("imgsix").style.visibility = "hidden";
+	document.getElementById("imgseven").style.visibility = "hidden";
+	document.getElementById("imgeight").style.visibility = "hidden";
+	document.getElementById("imgnine").style.visibility = "hidden";
 	document.getElementById("playagain").style.visibility = "hidden";
-	document.getElementById("winner").style.visibility = "visible";
+	document.getElementById("winner").style.visibility = "hidden";
 	document.getElementById("gametext").style.visibility = "hidden";
 	setTimeout(function(){
-		document.getElementById("imgfive").src = "";
+		document.getElementById("imgfive").style.visibility = "hidden";
 	},1);
 }
 function gameOver(){
-	console.log(one===two===three);
-	console.log(one+two+three);
-	console.log(one+"|"+two+"|"+three+"|"+four+"|"+five+"|"+six+"|"+seven+"|"+eight+"|"+nine);
-	if(one===two&&two===three||one===five&&five===nine||two===five&&five===eight||three===five&&five===seven||four===five&&five===six||seven===eight&&eight===nine||one===four&&four===seven||three===six&&six===nine){
+	if(numbers[0]===numbers[1]&&numbers[1]===numbers[2]||numbers[0]===numbers[4]&&numbers[4]===numbers[8]||numbers[1]===numbers[4]&&numbers[4]===numbers[7]||numbers[2]===numbers[4]&&numbers[4]===numbers[6]||numbers[3]===numbers[4]&&numbers[4]===numbers[5]||numbers[6]===numbers[7]&&numbers[7]===numbers[8]||numbers[0]===numbers[3]&&numbers[3]===numbers[6]||numbers[2]===numbers[5]&&numbers[5]===numbers[8]){
 		console.log("over");
 		game = "over";
 		winturn = turn;
