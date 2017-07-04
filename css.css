@@ -90,46 +90,55 @@ html,body{
 	position:absolute;
 	top:25%;
 	left:25%;
+	visibility:hidden;
 }
 #imgtwo{
 	position:absolute;
 	top:25%;
 	left:25%;
+	visibility:hidden;
 }
 #imgthree{
 	position:absolute;
 	top:25%;
 	left:25%;
+	visibility:hidden;
 }
 #imgfour{
 	position:absolute;
 	top:25%;
 	left:25%;
+	visibility:hidden;
 }
 #imgfive{
 	position:absolute;
 	top:25%;
 	left:25%;
+	visibility:hidden;
 }
 #imgsix{
 	position:absolute;
 	top:25%;
 	left:25%;
+	visibility:hidden;
 }
 #imgseven{
 	position:absolute;
 	top:25%;
 	left:25%;
+	visibility:hidden;
 }
 #imgeight{
 	position:absolute;
 	top:25%;
 	left:25%;
+	visibility:hidden;
 }
 #imgnine{
 	position:absolute;
 	top:25%;
 	left:25%;
+	visibility:hidden;
 }
 #gameover{
 	height:50px;
