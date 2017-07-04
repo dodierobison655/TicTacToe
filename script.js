@@ -2,6 +2,7 @@ var turn = "X";
 var numbers = ["0","1","2","3","4","5","6","7","8"];
 var game = "";
 var winturn = "";
+var bool = true;
 document.getElementById("imgone").style.visibility = "hidden";
 document.getElementById("imgtwo").style.visibility = "hidden";
 document.getElementById("imgthree").style.visibility = "hidden";
@@ -78,7 +79,7 @@ function playAgain(){
 	},1);
 }
 function gameOver(){
-	if(numbers[0]===numbers[1]&&numbers[1]===numbers[2]||numbers[0]===numbers[4]&&numbers[4]===numbers[8]||numbers[1]===numbers[4]&&numbers[4]===numbers[7]||numbers[2]===numbers[4]&&numbers[4]===numbers[6]||numbers[3]===numbers[4]&&numbers[4]===numbers[5]||numbers[6]===numbers[7]&&numbers[7]===numbers[8]||numbers[0]===numbers[3]&&numbers[3]===numbers[6]||numbers[2]===numbers[5]&&numbers[5]===numbers[8]){
+	if(winCheck()||tie()){
 		console.log("over");
 		game = "over";
 		winturn = turn;
@@ -86,8 +87,35 @@ function gameOver(){
 		document.getElementById("gametext").style.visibility = "visible";
 		document.getElementById("playagain").style.visibility = "visible";
 		setTimeout( function(){
-			document.getElementById("winner").innerHTML = winturn + " Wins!";
+			if(!tie()||winCheck()){
+				document.getElementById("winner").innerHTML = winturn + " Wins!";
+			} else {
+				document.getElementById("winner").innerHTML = "Tie";
+			}
 			document.getElementById("winner").style.visibility = "visible";
 		},500)
+	}
+}
+function tie(){
+	bool = true;
+	for(var o = 0;o<numbers.length;o++){
+		if(numbers[o]!="X"&&numbers[o]!="O"){
+			bool = false;
+			console.log(bool);
+		}
+	}
+	console.log(bool);
+	return bool;
+}
+function winCheck(){
+	if(numbers[0]===numbers[1]&&numbers[1]===numbers[2]||numbers[0]===numbers[4]&&
+	numbers[4]===numbers[8]||numbers[1]===numbers[4]&&numbers[4]===numbers[7]||
+	numbers[2]===numbers[4]&&numbers[4]===numbers[6]||numbers[3]===numbers[4]&&
+	numbers[4]===numbers[5]||numbers[6]===numbers[7]&&numbers[7]===numbers[8]||
+	numbers[0]===numbers[3]&&numbers[3]===numbers[6]||numbers[2]===numbers[5]&&
+	numbers[5]===numbers[8]){
+		return true;
+	}else{
+		return false;
 	}
 }
